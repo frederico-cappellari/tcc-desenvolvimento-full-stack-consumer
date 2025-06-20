@@ -1,68 +1,64 @@
-# gestao-financeira-notafical-consumer
+# Gestão Financeira - Nota Fiscal Consumer
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+## Finalidade do Projeto
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+Este projeto tem como objetivo gerenciar e consumir informações de notas fiscais eletrônicas, integrando funcionalidades de controle financeiro, categorias, transações, listas de compras e usuários. Ele foi desenvolvido utilizando o framework Quarkus, proporcionando alta performance e facilidade de integração com bancos de dados relacionais e mensageria (RabbitMQ).
 
-## Running the application in dev mode
+## Tecnologias Utilizadas
+- Java 21
+- Quarkus 3.22.1
+- PostgreSQL
+- RabbitMQ
+- Maven
 
-You can run your application in dev mode that enables live coding using:
+## Pré-requisitos
+- Java 21 instalado
+- Maven instalado
+- Docker (opcional, para banco de dados e RabbitMQ)
+- PostgreSQL em execução (local ou via Docker)
+- RabbitMQ em execução (local ou via Docker)
 
-```shell script
+## Instalação e Execução
+
+### 1. Clone o repositório
+
+### 2. Configure o banco de dados e RabbitMQ
+Você pode utilizar Docker para subir rapidamente os serviços necessários:
+
+#### Subindo PostgreSQL e RabbitMQ com Docker
+```sh
+docker run --name postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres:15
+
+docker run --name rabbitmq -p 5672:5672 -p 15672:15672 -d rabbitmq:3-management
+```
+
+Ajuste as configurações de conexão no arquivo `src/main/resources/application.properties` conforme necessário.
+
+### 3. Build do projeto
+```sh
+./mvnw clean install
+```
+Ou, se estiver no Windows:
+```sh
+mvnw.cmd clean install
+```
+
+### 4. Executando o projeto em modo desenvolvimento
+```sh
 ./mvnw quarkus:dev
 ```
-
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
-
-## Packaging and running the application
-
-The application can be packaged using:
-
-```shell script
-./mvnw package
+Ou, no Windows:
+```sh
+mvnw.cmd quarkus:dev
 ```
 
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+A aplicação estará disponível em: http://localhost:8080
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
 
-If you want to build an _über-jar_, execute the following command:
+## Observações
+- Certifique-se de que as portas 5432 (PostgreSQL) e 5672/15672 (RabbitMQ) estejam livres.
+- O projeto utiliza Quarkus, facilitando a criação de imagens nativas e integração com containers.
 
-```shell script
-./mvnw package -Dquarkus.package.jar.type=uber-jar
-```
-
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
-
-## Creating a native executable
-
-You can create a native executable using:
-
-```shell script
-./mvnw package -Dnative
-```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
-
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./target/gestao-financeira-notafical-consumer-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
-
-## Related Guides
-
-- Messaging - RabbitMQ Connector ([guide](https://quarkus.io/guides/rabbitmq)): Connect to RabbitMQ with Reactive Messaging
-- Messaging - AMQP Connector ([guide](https://quarkus.io/guides/amqp)): Connect to AMQP with Reactive Messaging
-
-## Provided Code
-
-### Messaging codestart
-
-Use Quarkus Messaging
-
-[Related Apache AMQP 1.0 guide section...](https://quarkus.io/guides/amqp)
+## Contato
+Dúvidas ou sugestões? Entre em contato com o mantenedor do projeto.
 
