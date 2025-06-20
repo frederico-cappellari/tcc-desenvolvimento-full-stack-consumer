@@ -1,3 +1,19 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "microprofile.tools.validation.unknown.excluded": [
+        "*/mp-rest/providers/*/priority",
+        "mp.openapi.schema.*",
+        "kafka-streams.*",
+        "camel.*",
+        "quarkus.http.*",
+        "rabbitmq-username",
+        "rabbitmq-host",
+        "rabbitmq-port",
+        "rabbitmq-password",
+        "quarkus.datasource.*",
+        "serpro-api/mp-rest/url",
+        "serpro-api/mp-rest/scope",
+        "serpro-api/mp-rest/headers",
+        "quarkus.hibernate-orm.log.sql"
+    ]
 }
